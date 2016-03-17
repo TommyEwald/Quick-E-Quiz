@@ -9,5 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.hwr_berlin.quick_e_quiz.QuestionActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnNewQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Question" />
+
+            <TextView
+                android:id="@+id/tvQuestions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

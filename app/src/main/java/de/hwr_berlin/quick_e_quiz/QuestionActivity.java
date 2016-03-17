@@ -2,8 +2,15 @@ package de.hwr_berlin.quick_e_quiz;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-public class QuestionActivity extends AppCompatActivity {
+import java.util.List;
+
+import de.hwr_berlin.quick_e_quiz.db.Question;
+
+public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView tvQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,5 +19,29 @@ public class QuestionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo);
+
+        tvQuestions = (TextView) findViewById(R.id.tvQuestions);
+        findViewById(R.id.btnNewQuestion).setOnClickListener(this);
+        showQuestions();
+    }
+
+    private void showQuestions() {
+        List<Question> questions = Question.listAll(Question.class);
+        String output = "";
+        for (Question question : questions) {
+            output += question.getQuestion() + "\n";
+        }
+        tvQuestions.setText(output);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.btnNewQuestion:
+                Question question = new Question(1, 1, "Wie geht es dir?", "richtig", "falsch", "falsch", "falsche");
+                question.save();
+                showQuestions();
+                break;
+        }
     }
 }
