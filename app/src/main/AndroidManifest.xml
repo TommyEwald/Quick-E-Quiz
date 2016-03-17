@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuestionActivity" />
-        <activity android:name=".HighscoreActivity"></activity>
+        <activity android:name=".HighscoreActivity" />
+        <activity android:name=".RulesActivity"></activity>
     </application>
 
 </manifest>
