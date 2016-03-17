@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.btnStartQuiz).setOnClickListener(this);
+        findViewById(R.id.ibtnHighscore).setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -114,6 +115,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.btnStartQuiz:
                 Intent startQuizIntent = new Intent(this, QuestionActivity.class);
                 startActivity(startQuizIntent);
+                break;
+            case R.id.ibtnHighscore:
+                Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
+                startActivity(highscoreIntent);
                 break;
         }
     }
