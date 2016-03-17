@@ -13,8 +13,18 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="de.hwr_berlin.quick_e_quiz.MainActivity">
 
-    <TextView
-        android:text="Hello World!"
+
+    <ImageView
+        android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"/>
+
+    <Button
+        android:id="@+id/btnStartQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivLogo"
+        android:text="Start Quiz!"/>
+
 </RelativeLayout>
