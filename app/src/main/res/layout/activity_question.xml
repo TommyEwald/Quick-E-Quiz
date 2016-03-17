@@ -9,4 +9,5 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.hwr_berlin.quick_e_quiz.QuestionActivity">
 
+
 </RelativeLayout>
