@@ -29,7 +29,7 @@
                 android:src="@drawable/spielen" />
 
             <ImageButton
-                android:id="@+id/ibtnHighscore"
+                android:id="@+id/btnHighscore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btnStartQuiz"
@@ -38,6 +38,17 @@
                 android:paddingBottom="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/highscore" />
+
+            <ImageButton
+                android:id="@+id/btnRules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnHighscore"
+                android:layout_centerHorizontal="true"
+                android:background="@null"
+                android:paddingBottom="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/regeln" />
         </TableLayout>
     </ScrollView>
 </RelativeLayout>

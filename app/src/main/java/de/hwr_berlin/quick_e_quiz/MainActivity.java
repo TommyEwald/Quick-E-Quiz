@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.btnStartQuiz).setOnClickListener(this);
-        findViewById(R.id.ibtnHighscore).setOnClickListener(this);
+        findViewById(R.id.btnHighscore).setOnClickListener(this);
+        findViewById(R.id.btnRules).setOnClickListener(this);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -40,9 +41,13 @@ public class MainActivity extends AppCompatActivity
                 Intent startQuizIntent = new Intent(this, QuestionActivity.class);
                 startActivity(startQuizIntent);
                 break;
-            case R.id.ibtnHighscore:
+            case R.id.btnHighscore:
                 Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
                 startActivity(highscoreIntent);
+                break;
+            case R.id.btnRules:
+                Intent rulesIntent = new Intent(this, RulesActivity.class);
+                startActivity(rulesIntent);
                 break;
         }
     }
