@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         tvQuestions = (TextView) findViewById(R.id.tvQuestions);
         findViewById(R.id.btnNewQuestion).setOnClickListener(this);
+        findViewById(R.id.btnRandomQuestion).setOnClickListener(this);
         showQuestions();
     }
 
@@ -29,19 +31,26 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         List<Question> questions = Question.listAll(Question.class);
         String output = "";
         for (Question question : questions) {
-            output += question.getQuestion() + "\n";
+            output += question.getId() + " - " + question.getQuestion() + "\n";
         }
         tvQuestions.setText(output);
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.btnNewQuestion:
                 Question question = new Question(1, 1, "Wie geht es dir?", "richtig", "falsch", "falsch", "falsche");
                 question.save();
                 showQuestions();
                 break;
+            case R.id.btnRandomQuestion:
+                Question q = randomQuestion();
+                Toast.makeText(this, String.valueOf(q.getId()) + " - " + q.getQuestion(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private Question randomQuestion() {
+        return Question.find(Question.class, null, null, null, "Random()", "1").get(0);
     }
 }
