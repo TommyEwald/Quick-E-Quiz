@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.hwr_berlin.quick_e_quiz.db.Category;
@@ -34,7 +36,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         getCategories();
         Question start = randomQuestion(1);
         setQuestionValues(start);
-
     }
 
     private List<Category> getCategories() {
@@ -44,10 +45,18 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void setQuestionValues(Question question){
         ((TextView) findViewById(R.id.tvQuestions)).setText(question.getQuestion());
-        ((Button) findViewById(R.id.btnAnswer1)).setText(question.getCorrect());
-        ((Button) findViewById(R.id.btnAnswer2)).setText(question.getWrong1());
-        ((Button) findViewById(R.id.btnAnswer3)).setText(question.getWrong2());
-        ((Button) findViewById(R.id.btnAnswer4)).setText(question.getWrong3());
+
+        List<String> options = new ArrayList<>();
+        options.add(question.getCorrect());
+        options.add(question.getWrong1());
+        options.add(question.getWrong2());
+        options.add(question.getWrong3());
+        Collections.shuffle(options);
+        ((Button) findViewById(R.id.btnAnswer1)).setText(options.get(0));
+        ((Button) findViewById(R.id.btnAnswer2)).setText(options.get(1));
+        ((Button) findViewById(R.id.btnAnswer3)).setText(options.get(2));
+        ((Button) findViewById(R.id.btnAnswer4)).setText(options.get(3));
+
         checkCorrect = question.getCorrect();
     }
 
