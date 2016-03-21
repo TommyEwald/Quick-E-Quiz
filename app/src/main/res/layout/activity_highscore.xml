@@ -10,10 +10,34 @@
     tools:context="de.hwr_berlin.quick_e_quiz.HighscoreActivity">
 
 
+    <TextView
+        android:id="@+id/tvHeaderRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="15dp"
+        android:text="Rank" />
+    <TextView
+        android:id="@+id/tvHeaderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/tvHeaderScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="15dp"
+        android:text="Score" />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lvHighscore">
+        android:id="@+id/lvHighscore"
+        android:layout_below="@id/tvHeaderScore">
     </ListView>
 
 </RelativeLayout>
