@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo);
 
-        Loader loader = new Loader(this);
-        loader.loadQuestions();
+        Loader.loadData(this);
     }
 
     @Override
