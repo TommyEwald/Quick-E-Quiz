@@ -2,6 +2,7 @@ package de.hwr_berlin.quick_e_quiz;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 public class HighscoreActivity extends AppCompatActivity {
 
@@ -12,5 +13,8 @@ public class HighscoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.highscore);
+
+        ListView items = (ListView) this.findViewById(R.id.lvHighscore);
+        //ToDo add items
     }
 }
