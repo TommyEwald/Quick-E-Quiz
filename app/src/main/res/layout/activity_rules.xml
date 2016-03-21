@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sie bekommen solange Fragen aus einer Kategorie gestellt, bis Sie eine Frage richtig beantwortet haben. Sobald Sie aus jeder Kategorie eine Frage richhtig beantwortrt haben, ist das Spiel beendet."
+        android:text="Sie bekommen solange Fragen aus einer Kategorie gestellt, bis Sie eine Frage richtig beantwortet haben. Sobald Sie aus jeder Kategorie eine Frage richtig beantwortet haben, ist das Spiel beendet."
         android:textColor="#B40404"
         android:typeface="monospace"
         android:textSize="25sp"/>
