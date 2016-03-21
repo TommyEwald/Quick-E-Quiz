@@ -8,9 +8,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface BackendService {
-    @GET("questions.json")
+    @GET("?questions")
     Call<List<Question>> listQuestions();
 
-    @GET("categories.json")
+    @GET("?categories")
     Call<List<Category>> listCategories();
 }

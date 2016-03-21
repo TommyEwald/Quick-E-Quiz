@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Loader {
     public static void loadData(final Context context) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://gist.githubusercontent.com/PascalHelbig/cfba6711294e68f07f1b/raw/")
+                .baseUrl("http://lamp.wlan.hwr-berlin.de/CS/CSDB3/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

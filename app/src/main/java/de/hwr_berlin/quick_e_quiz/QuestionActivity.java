@@ -32,7 +32,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btnAnswer3).setOnClickListener(this);
         findViewById(R.id.btnAnswer4).setOnClickListener(this);
         getCategories();
-        Question start = randomQuestion(0);
+        Question start = randomQuestion(1);
         setQuestionValues(start);
 
     }
