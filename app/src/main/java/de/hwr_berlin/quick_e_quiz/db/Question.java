@@ -27,4 +27,20 @@ public class Question extends SugarRecord {
     public String getQuestion() {
         return question;
     }
+
+    public String getCorrect() {
+        return correct;
+    }
+
+    public String getWrong1() {
+        return wrong1;
+    }
+
+    public String getWrong2() {
+        return wrong2;
+    }
+
+    public String getWrong3() {
+        return wrong3;
+    }
 }

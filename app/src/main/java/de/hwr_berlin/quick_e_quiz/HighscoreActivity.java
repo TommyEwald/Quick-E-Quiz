@@ -21,7 +21,6 @@ public class HighscoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.highscore);
 
-
         ArrayList<MockHighscore> arrayofScores = new ArrayList<MockHighscore>();
         HighscoreAdapter adapter = new HighscoreAdapter(this, arrayofScores);
 

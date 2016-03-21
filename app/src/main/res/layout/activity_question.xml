@@ -13,10 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnNewQuestion"
@@ -28,14 +27,48 @@
                 android:id="@+id/btnRandomQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/btnNewQuestion"
                 android:text="Random Question" />
 
             <TextView
                 android:id="@+id/tvQuestions"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnRandomQuestion"/>
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/btnAnswer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvQuestions"
+                android:layout_alignParentLeft="true"
+                android:text="Antwort1" />
+
+            <Button
+                android:id="@+id/btnAnswer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tvQuestions"
+                android:text="Antwort2" />
+
+            <Button
+                android:id="@+id/btnAnswer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnAnswer1"
+                android:layout_alignParentLeft="true"
+                android:text="Antwort3" />
+
+            <Button
+                android:id="@+id/btnAnswer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnAnswer2"
+                android:layout_alignParentRight="true"
+                android:text="Antwort4" />
+        </RelativeLayout>
+
     </ScrollView>
 
 

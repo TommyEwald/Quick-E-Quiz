@@ -7,4 +7,12 @@ public class Category extends SugarRecord {
     String name;
 
     public Category() {}
+
+    public int getCid() {
+        return cid;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
