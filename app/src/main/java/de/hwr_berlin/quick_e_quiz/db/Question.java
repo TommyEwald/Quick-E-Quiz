@@ -43,4 +43,8 @@ public class Question extends SugarRecord {
     public String getWrong3() {
         return wrong3;
     }
+
+    public int getCategory() {
+        return category;
+    }
 }

@@ -16,7 +16,7 @@ import de.hwr_berlin.quick_e_quiz.db.Question;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvQuestions;
-    String checkCorrect;
+    Question currentQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ((Button) findViewById(R.id.btnAnswer3)).setText(options.get(2));
         ((Button) findViewById(R.id.btnAnswer4)).setText(options.get(3));
 
-        checkCorrect = question.getCorrect();
+        currentQuestion = question;
     }
 
     private void showQuestions() {
@@ -95,8 +95,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnAnswer3:
             case R.id.btnAnswer4:
                 Button button = (Button) v;
-                if (button.getText() == checkCorrect){
+                Question next;
+                if (button.getText() == currentQuestion.getCorrect().toString()){
                     Toast.makeText(this, "Richtig!!!", Toast.LENGTH_SHORT).show();
+                    next = randomQuestion((int)currentQuestion.getCategory() + 1);
+                    setQuestionValues(next);
+                }
+                else{
+                    next = randomQuestion((int)currentQuestion.getCategory());
+                    setQuestionValues(next);
                 }
                 break;
         }
