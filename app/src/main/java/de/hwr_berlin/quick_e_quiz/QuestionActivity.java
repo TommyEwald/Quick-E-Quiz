@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +19,26 @@ import de.hwr_berlin.quick_e_quiz.db.Question;
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvQuestions;
     Question currentQuestion;
+    long timer = 0;
+    TextView timerTextView;
+
+    //runs without a timer by reposting this handler at the end of the runnable
+    Handler timerHandler = new Handler();
+    Runnable timerRunnable = new Runnable() {
+
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - timer;
+            int seconds = (int) (millis / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+
+            timerHandler.postDelayed(this, 500);
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +55,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btnAnswer2).setOnClickListener(this);
         findViewById(R.id.btnAnswer3).setOnClickListener(this);
         findViewById(R.id.btnAnswer4).setOnClickListener(this);
-        getCategories();
+        timer = System.currentTimeMillis();
+        timerHandler.postDelayed(timerRunnable, 0);
+        timerTextView = (TextView) findViewById(R.id.tvTimer);
         Question start = randomQuestion(1);
         setQuestionValues(start);
     }
@@ -80,6 +103,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void highscore(){
+        timerHandler.removeCallbacks(timerRunnable);
         Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
         startActivity(highscoreIntent);
     }

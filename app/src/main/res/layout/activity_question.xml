@@ -67,6 +67,12 @@
                 android:layout_below="@id/btnAnswer2"
                 android:layout_alignParentRight="true"
                 android:text="Antwort4" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnAnswer3"/>
         </RelativeLayout>
 
     </ScrollView>
