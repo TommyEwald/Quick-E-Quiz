@@ -1,5 +1,6 @@
 package de.hwr_berlin.quick_e_quiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -78,6 +79,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         tvQuestions.setText(output);
     }
 
+    private void highscore(){
+        Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
+        startActivity(highscoreIntent);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -98,8 +104,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 Question next;
                 if (button.getText() == currentQuestion.getCorrect().toString()){
                     Toast.makeText(this, "Richtig!!!", Toast.LENGTH_SHORT).show();
-                    next = randomQuestion((int)currentQuestion.getCategory() + 1);
-                    setQuestionValues(next);
+                    if ((int)currentQuestion.getCategory() <= 4){
+                        next = randomQuestion((int)currentQuestion.getCategory() + 1);
+                        setQuestionValues(next);
+                    }
+                    else{
+                        highscore();
+                    }
                 }
                 else{
                     next = randomQuestion((int)currentQuestion.getCategory());
