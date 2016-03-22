@@ -21,6 +21,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     Question currentQuestion;
     long timer = 0;
     TextView timerTextView;
+    int faultMultiplier = 0;
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -30,10 +31,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         public void run() {
             long millis = System.currentTimeMillis() - timer;
             int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
+            //int minutes = seconds / 60;
+            //seconds = seconds % 60;
 
-            timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+            //timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+            timerTextView.setText(String.format("%d", seconds));
 
             timerHandler.postDelayed(this, 500);
         }
@@ -104,6 +106,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void highscore(){
         timerHandler.removeCallbacks(timerRunnable);
+        long score = 0;
+        try{
+            score = Long.parseLong(timerTextView.getText().toString());
+        }catch (NumberFormatException nfe){
+
+        }
+        score = score + faultMultiplier*5;
+        Toast.makeText(this, "Dein Score: " + score, Toast.LENGTH_SHORT).show();
         Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
         startActivity(highscoreIntent);
     }
@@ -137,6 +147,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 else{
+                    faultMultiplier++;
                     next = randomQuestion((int)currentQuestion.getCategory());
                     setQuestionValues(next);
                 }
