@@ -71,6 +71,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void setQuestionValues(Question question){
         ((TextView) findViewById(R.id.tvQuestions)).setText(question.getQuestion());
+        ((TextView) findViewById(R.id.tvCategory)).setText("Kategorienummer " + question.getCategory());
 
         List<String> options = new ArrayList<>();
         options.add(question.getCorrect());
