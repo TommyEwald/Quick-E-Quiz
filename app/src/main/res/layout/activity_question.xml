@@ -17,36 +17,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btnNewQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Question" />
-
-            <Button
-                android:id="@+id/btnRandomQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnNewQuestion"
-                android:text="Random Question" />
-
             <TextView
                 android:id="@+id/tvCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnRandomQuestion"/>
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tvQuestions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvCategory"/>
+                android:layout_below="@id/tvCategory"
+                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"/>
 
             <Button
                 android:id="@+id/btnAnswer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvQuestions"
+                android:textColor="#FF0000"
+                android:background="#FFFFFF"
+                android:layout_margin="5dp"
                 android:text="Antwort1" />
 
             <Button
@@ -54,6 +47,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer1"
+                android:textColor="#FF0000"
+                android:background="#FFFFFF"
+                android:layout_margin="5dp"
                 android:text="Antwort2" />
 
             <Button
@@ -61,6 +57,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer2"
+                android:textColor="#FF0000"
+                android:background="#FFFFFF"
+                android:layout_margin="5dp"
                 android:text="Antwort3" />
 
             <Button
@@ -68,6 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer3"
+                android:textColor="#FF0000"
+                android:background="#FFFFFF"
+                android:layout_margin="5dp"
                 android:text="Antwort4" />
 
             <TextView

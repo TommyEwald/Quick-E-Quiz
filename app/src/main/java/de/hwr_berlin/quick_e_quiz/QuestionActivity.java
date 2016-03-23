@@ -51,8 +51,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setLogo(R.drawable.logo);
 
         tvQuestions = (TextView) findViewById(R.id.tvQuestions);
-        findViewById(R.id.btnNewQuestion).setOnClickListener(this);
-        findViewById(R.id.btnRandomQuestion).setOnClickListener(this);
         findViewById(R.id.btnAnswer1).setOnClickListener(this);
         findViewById(R.id.btnAnswer2).setOnClickListener(this);
         findViewById(R.id.btnAnswer3).setOnClickListener(this);
@@ -61,6 +59,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         timerHandler.postDelayed(timerRunnable, 0);
         timerTextView = (TextView) findViewById(R.id.tvTimer);
         Question start = randomQuestion(1);
+
         setQuestionValues(start);
     }
 
@@ -68,10 +67,19 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         List<Category> categories = Category.listAll(Category.class);
         return Category.listAll(Category.class);
     }
+    private String getCategorie(int cId) {
+        List<Category> categories = Category.find(Category.class, "cId = ?", String.valueOf(cId));
+        String output ="";
+
+        for (Category categorie : categories) {
+            output += categorie.getName() + "\n";
+        }
+        return output;
+    }
 
     private void setQuestionValues(Question question){
         ((TextView) findViewById(R.id.tvQuestions)).setText(question.getQuestion());
-        ((TextView) findViewById(R.id.tvCategory)).setText("Kategorienummer " + question.getCategory());
+        ((TextView) findViewById(R.id.tvCategory)).setText("Kategorie: " + getCategorie(question.getCategory()));
 
         List<String> options = new ArrayList<>();
         options.add(question.getCorrect());
@@ -122,15 +130,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnNewQuestion:
-                Question question = new Question(1, 1, "Wie geht es dir?", "richtig", "falsch", "falsch", "falsche");
-                question.save();
-                showQuestions();
-                break;
-            case R.id.btnRandomQuestion:
-                Question q = randomQuestion(0);
-                Toast.makeText(this, String.valueOf(q.getId()) + " - " + q.getQuestion(), Toast.LENGTH_SHORT).show();
-                break;
             case R.id.btnAnswer1:
             case R.id.btnAnswer2:
             case R.id.btnAnswer3:
