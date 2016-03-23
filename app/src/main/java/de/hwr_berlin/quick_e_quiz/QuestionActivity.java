@@ -35,7 +35,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             //seconds = seconds % 60;
 
             //timerTextView.setText(String.format("%d:%02d", minutes, seconds));
-            timerTextView.setText(String.format("%d", seconds));
+            timerTextView.setText("Zeit: " + String.format("%d", seconds));
 
             timerHandler.postDelayed(this, 500);
         }

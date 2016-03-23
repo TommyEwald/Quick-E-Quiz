@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:textSize="25dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -30,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvCategory"
                 android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:layout_centerHorizontal="true"/>
 
             <Button
@@ -38,8 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvQuestions"
                 android:textColor="#FF0000"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:text="Antwort1" />
 
             <Button
@@ -48,8 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer1"
                 android:textColor="#FF0000"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:text="Antwort2" />
 
             <Button
@@ -58,8 +62,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer2"
                 android:textColor="#FF0000"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:text="Antwort3" />
 
             <Button
@@ -68,15 +73,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer3"
                 android:textColor="#FF0000"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:text="Antwort4" />
 
             <TextView
                 android:id="@+id/tvTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnAnswer4"/>
+                android:layout_below="@id/btnAnswer4"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
     </ScrollView>
