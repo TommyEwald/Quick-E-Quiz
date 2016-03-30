@@ -27,6 +27,7 @@ public class HighscoreActivity extends AppCompatActivity {
 
         MockHighscore newScores = new MockHighscore("1", "Hans", "1111");
         adapter.add(newScores);
+        //TODO Datensätze von Server auslesen und in Liste eintragen
 
         ListView items = (ListView) this.findViewById(R.id.lvHighscore);
         items.setAdapter(adapter);
