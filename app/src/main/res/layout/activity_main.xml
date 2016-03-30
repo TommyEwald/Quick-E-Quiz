@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.hwr_berlin.quick_e_quiz.MainActivity">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -50,5 +50,5 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/regeln" />
         </TableLayout>
-    </ScrollView>
+    </FrameLayout>
 </RelativeLayout>
