@@ -31,7 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvCategory"
                 android:layout_margin="5dp"
-                android:textSize="18dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"/>
 
             <Button
@@ -39,8 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvQuestions"
-                android:textColor="#FF0000"
-                android:background="@null"
+                android:textColor="#000000"
+                android:background="@drawable/orange_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort1" />
@@ -50,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer1"
-                android:textColor="#FF0000"
-                android:background="@null"
+                android:textColor="#000000"
+                android:background="@drawable/orange_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort2" />
@@ -61,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer2"
-                android:textColor="#FF0000"
-                android:background="@null"
+                android:textColor="#000000"
+                android:background="@drawable/orange_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort3" />
@@ -72,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer3"
-                android:textColor="#FF0000"
-                android:background="@null"
+                android:textColor="#000000"
+                android:background="@drawable/orange_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort4" />
