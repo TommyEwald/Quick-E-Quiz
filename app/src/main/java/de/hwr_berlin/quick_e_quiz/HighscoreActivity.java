@@ -1,5 +1,6 @@
 package de.hwr_berlin.quick_e_quiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -30,7 +31,15 @@ public class HighscoreActivity extends AppCompatActivity {
         ListView items = (ListView) this.findViewById(R.id.lvHighscore);
         items.setAdapter(adapter);
 
+    }
 
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        //super.onBackPressed();  // optional depending on your needs
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
     }
 
 }
