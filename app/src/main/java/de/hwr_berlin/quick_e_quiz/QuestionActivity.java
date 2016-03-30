@@ -1,6 +1,6 @@
 package de.hwr_berlin.quick_e_quiz;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -123,8 +123,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         }
         score = score + faultMultiplier*5;
         Toast.makeText(this, "Dein Score: " + score, Toast.LENGTH_SHORT).show();
-        Intent highscoreIntent = new Intent(this, HighscoreActivity.class);
-        startActivity(highscoreIntent);
+
+        CustomDialogClass cdd = new CustomDialogClass(QuestionActivity.this);
+        cdd.show();
     }
 
     @Override
