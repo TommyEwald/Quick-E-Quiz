@@ -33,14 +33,10 @@ public class HighscoreActivity extends AppCompatActivity {
         items.setAdapter(adapter);
 
     }
-
     @Override
     public void onBackPressed()
     {
-        // code here to show dialog
-        //super.onBackPressed();  // optional depending on your needs
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
-
 }

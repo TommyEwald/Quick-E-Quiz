@@ -51,4 +51,10 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
+    @Override
+    public void onBackPressed()
+    {
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
+    }
 }

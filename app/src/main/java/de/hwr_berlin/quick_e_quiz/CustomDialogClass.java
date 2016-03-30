@@ -31,10 +31,7 @@ public class CustomDialogClass extends Dialog implements
         setContentView(R.layout.layout_highscore_dialog);
         yes = (Button) findViewById(R.id.btnOk);
         yes.setOnClickListener(this);
-
-
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -47,5 +44,11 @@ public class CustomDialogClass extends Dialog implements
                 break;
         }
         dismiss();
+    }
+    @Override
+    public void onBackPressed()
+    {
+        Intent mainIntent = new Intent(c, MainActivity.class);
+        c.startActivity(mainIntent);
     }
 }
