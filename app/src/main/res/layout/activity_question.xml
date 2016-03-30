@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvQuestions"
                 android:textColor="#000000"
-                android:background="@drawable/orange_button"
+                android:background="@drawable/question_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort1" />
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer1"
                 android:textColor="#000000"
-                android:background="@drawable/orange_button"
+                android:background="@drawable/question_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort2" />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer2"
                 android:textColor="#000000"
-                android:background="@drawable/orange_button"
+                android:background="@drawable/question_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort3" />
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnAnswer3"
                 android:textColor="#000000"
-                android:background="@drawable/orange_button"
+                android:background="@drawable/question_button"
                 android:layout_margin="5dp"
                 android:textSize="18dp"
                 android:text="Antwort4" />
