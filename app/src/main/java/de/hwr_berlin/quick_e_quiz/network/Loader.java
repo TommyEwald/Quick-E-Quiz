@@ -6,6 +6,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import de.hwr_berlin.quick_e_quiz.db.Category;
+import de.hwr_berlin.quick_e_quiz.db.Highscore;
 import de.hwr_berlin.quick_e_quiz.db.Question;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +50,21 @@ public class Loader {
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
                 Toast.makeText(context, "Kategorien konnten nicht geladen werden.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        service.listHighscores().enqueue(new Callback<List<Highscore>>() {
+            @Override
+            public void onResponse(Call<List<Highscore>> call, Response<List<Highscore>> response) {
+                Highscore.deleteAll(Highscore.class);
+                for (Highscore highscore : response.body()) {
+                    highscore.save();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Highscore>> call, Throwable t) {
+                Toast.makeText(context, "Highscore konnte nicht geladen werden.", Toast.LENGTH_SHORT).show();
             }
         });
     }

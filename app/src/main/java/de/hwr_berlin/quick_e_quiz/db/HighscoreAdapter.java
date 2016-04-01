@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.hwr_berlin.quick_e_quiz.R;
 
@@ -15,7 +15,7 @@ import de.hwr_berlin.quick_e_quiz.R;
  * Created by EwaldT on 21.03.2016.
  */
 public class HighscoreAdapter extends ArrayAdapter<Highscore>{
-    public HighscoreAdapter(Context context, ArrayList<Highscore> highscores){
+    public HighscoreAdapter(Context context, List<Highscore> highscores){
         super(context, 0, highscores);
     }
 
