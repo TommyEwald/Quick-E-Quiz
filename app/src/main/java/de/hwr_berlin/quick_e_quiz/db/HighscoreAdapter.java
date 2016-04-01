@@ -14,14 +14,14 @@ import de.hwr_berlin.quick_e_quiz.R;
 /**
  * Created by EwaldT on 21.03.2016.
  */
-public class HighscoreAdapter extends ArrayAdapter<MockHighscore>{
-    public HighscoreAdapter(Context context, ArrayList<MockHighscore> highscores){
+public class HighscoreAdapter extends ArrayAdapter<Highscore>{
+    public HighscoreAdapter(Context context, ArrayList<Highscore> highscores){
         super(context, 0, highscores);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        MockHighscore highscore = getItem(position);
+        Highscore highscore = getItem(position);
 
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_highscore_item, parent, false);
@@ -30,9 +30,9 @@ public class HighscoreAdapter extends ArrayAdapter<MockHighscore>{
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvScore = (TextView) convertView.findViewById(R.id.tvScore);
 
-        tvRank.setText(highscore.rank);
-        tvName.setText(highscore.name);
-        tvScore.setText(highscore.score);
+        tvRank.setText(String.valueOf(position + 1));
+        tvName.setText(highscore.getName());
+        tvScore.setText(String.valueOf(highscore.getScore()));
 
         return convertView;
     }
