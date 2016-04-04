@@ -20,6 +20,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     TextView tvQuestions;
     Question currentQuestion;
     long timer = 0;
+    long score = 0;
     TextView timerTextView;
     int faultMultiplier = 0;
 
@@ -56,6 +57,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btnAnswer3).setOnClickListener(this);
         findViewById(R.id.btnAnswer4).setOnClickListener(this);
         timer = System.currentTimeMillis();
+        score = 0;
         timerHandler.postDelayed(timerRunnable, 0);
         timerTextView = (TextView) findViewById(R.id.tvTimer);
         Question start = randomQuestion(1);
@@ -115,7 +117,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void highscore(){
         timerHandler.removeCallbacks(timerRunnable);
-        long score = 0;
+
         try{
             score = Long.parseLong(timerTextView.getText().toString());
         }catch (NumberFormatException nfe){
