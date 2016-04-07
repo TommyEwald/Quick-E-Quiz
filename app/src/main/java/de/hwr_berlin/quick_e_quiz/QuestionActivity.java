@@ -19,11 +19,11 @@ import de.hwr_berlin.quick_e_quiz.db.Question;
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvQuestions;
     Question currentQuestion;
-    long timer = 0;
-    long time = 0;
     static int faultMultiplier = 5;
+    long timer = 0;
+    int time = 0;
     int wrongAnswers = 0;
-    long score = 0;
+    int score = 0;
     TextView timerTextView;
     TextView faultCountTextView;
 
@@ -34,8 +34,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         @Override
         public void run() {
             long millis = System.currentTimeMillis() - timer;
-            int seconds = (int) (millis / 1000);
-            timerTextView.setText("Zeit: " + String.format("%d", seconds));
+            time = (int) (millis / 1000);
+            timerTextView.setText("Zeit: " + String.format("%d", time));
             faultCountTextView.setText(String.format("Fehler: " + "%d", wrongAnswers));
 
 
@@ -119,22 +119,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void highscore(){
         timerHandler.removeCallbacks(timerRunnable);
-
-        try{
-            //ToDo: BUG! Gibt "Zeit: n" zurück. Nicht für Berechnung geeignet.
-            time = Long.parseLong(timerTextView.getText().toString());
-        }catch (NumberFormatException nfe){
-
-        }
         score = time + wrongAnswers * faultMultiplier;
         Toast.makeText(this, "Dein Score: " + score, Toast.LENGTH_SHORT).show();
 
         CustomDialogClass cdd = new CustomDialogClass(QuestionActivity.this);
         cdd.show();
         //Dirty, aber implementierung in der CustomDialogClass crasht sonst.
-        cdd.tv_time.setText(timerTextView.getText().toString());
+        cdd.tv_time.append(Integer.toString(time));
         cdd.tv_fault.append(Integer.toString(wrongAnswers * faultMultiplier));
-        cdd.tv_score.append(Long.toString(score));
+        cdd.tv_score.append(Integer.toString(score));
     }
 
     @Override
