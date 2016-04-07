@@ -2,6 +2,7 @@ package de.hwr_berlin.quick_e_quiz;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class CustomDialogClass extends Dialog implements
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_highscore_dialog);
+        setCanceledOnTouchOutside(false);
         yes = (Button) findViewById(R.id.btnOk);
         yes.setOnClickListener(this);
         tv_time = (TextView) this.findViewById(R.id.time);
