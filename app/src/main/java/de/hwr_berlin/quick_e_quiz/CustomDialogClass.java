@@ -39,6 +39,7 @@ public class CustomDialogClass extends Dialog implements
                 // TODO Namen und score an Server senden.
                 Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
                 c.startActivity(highscoreIntent);
+                c.finish();
                 break;
             default:
                 break;
@@ -48,7 +49,6 @@ public class CustomDialogClass extends Dialog implements
     @Override
     public void onBackPressed()
     {
-        Intent mainIntent = new Intent(c, MainActivity.class);
-        c.startActivity(mainIntent);
+        c.finish();
     }
 }

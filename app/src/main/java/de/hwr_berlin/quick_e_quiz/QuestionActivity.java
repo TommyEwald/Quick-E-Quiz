@@ -123,7 +123,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         }catch (NumberFormatException nfe){
 
         }
-        score = score + faultMultiplier*5;
+        score = score + faultMultiplier * 5;
         Toast.makeText(this, "Dein Score: " + score, Toast.LENGTH_SHORT).show();
 
         CustomDialogClass cdd = new CustomDialogClass(QuestionActivity.this);
