@@ -2,7 +2,6 @@ package de.hwr_berlin.quick_e_quiz;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
