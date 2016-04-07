@@ -20,10 +20,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     TextView tvQuestions;
     Question currentQuestion;
     long timer = 0;
+    long time = 0;
+    static int faultMultiplier = 5;
+    int wrongAnswers = 0;
     long score = 0;
     TextView timerTextView;
     TextView faultCountTextView;
-    int faultMultiplier = 0;
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -34,7 +36,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             long millis = System.currentTimeMillis() - timer;
             int seconds = (int) (millis / 1000);
             timerTextView.setText("Zeit: " + String.format("%d", seconds));
-            faultCountTextView.setText(String.format("Fehler: " + "%d", faultMultiplier));
+            faultCountTextView.setText(String.format("Fehler: " + "%d", wrongAnswers));
 
 
             timerHandler.postDelayed(this, 500);
@@ -119,15 +121,20 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         timerHandler.removeCallbacks(timerRunnable);
 
         try{
-            score = Long.parseLong(timerTextView.getText().toString());
+            //ToDo: BUG! Gibt "Zeit: n" zurück. Nicht für Berechnung geeignet.
+            time = Long.parseLong(timerTextView.getText().toString());
         }catch (NumberFormatException nfe){
 
         }
-        score = score + faultMultiplier * 5;
+        score = time + wrongAnswers * faultMultiplier;
         Toast.makeText(this, "Dein Score: " + score, Toast.LENGTH_SHORT).show();
 
         CustomDialogClass cdd = new CustomDialogClass(QuestionActivity.this);
         cdd.show();
+        //Dirty, aber implementierung in der CustomDialogClass crasht sonst.
+        cdd.tv_time.setText(timerTextView.getText().toString());
+        cdd.tv_fault.append(Integer.toString(wrongAnswers * faultMultiplier));
+        cdd.tv_score.append(Long.toString(score));
     }
 
     @Override
@@ -150,7 +157,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 else{
-                    faultMultiplier++;
+                    wrongAnswers++;
                     next = randomQuestion((int)currentQuestion.getCategory());
                     setQuestionValues(next);
                 }

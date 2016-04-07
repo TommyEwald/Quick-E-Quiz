@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by EwaldT on 30.03.2016.
@@ -17,7 +18,9 @@ public class CustomDialogClass extends Dialog implements
     public Activity c;
     public Dialog d;
     public Button yes;
-
+    public TextView tv_time;
+    public TextView tv_fault;
+    public TextView tv_score;
     public CustomDialogClass(Activity a) {
         super(a);
         // TODO Auto-generated constructor stub
@@ -31,6 +34,9 @@ public class CustomDialogClass extends Dialog implements
         setContentView(R.layout.layout_highscore_dialog);
         yes = (Button) findViewById(R.id.btnOk);
         yes.setOnClickListener(this);
+        tv_time = (TextView) this.findViewById(R.id.time);
+        tv_fault = (TextView) this.findViewById(R.id.fault);
+        tv_score = (TextView) this.findViewById(R.id.score);
     }
     @Override
     public void onClick(View v) {
