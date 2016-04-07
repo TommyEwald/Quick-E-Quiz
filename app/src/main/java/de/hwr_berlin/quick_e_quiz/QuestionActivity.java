@@ -67,7 +67,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private List<Category> getCategories() {
         List<Category> categories = Category.listAll(Category.class);
-        return Category.listAll(Category.class);
+        return categories;
     }
     private String getCategorie(int cId) {
         List<Category> categories = Category.find(Category.class, "cId = ?", String.valueOf(cId));
@@ -141,7 +141,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 Question next;
                 if (button.getText() == currentQuestion.getCorrect().toString()){
                     Toast.makeText(this, "Richtig!!!", Toast.LENGTH_SHORT).show();
-                    if ((int)currentQuestion.getCategory() <= 4){
+                    if ((int)currentQuestion.getCategory() <= getCategories().size() - 2){
                         next = randomQuestion((int)currentQuestion.getCategory() + 1);
                         setQuestionValues(next);
                     }
