@@ -86,6 +86,13 @@
                 android:layout_below="@id/btnAnswer4"
                 android:textSize="18dp"
                 android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/tvFaultCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTimer"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
     </ScrollView>

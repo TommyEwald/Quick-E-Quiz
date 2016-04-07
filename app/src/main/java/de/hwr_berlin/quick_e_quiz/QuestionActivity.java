@@ -22,6 +22,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     long timer = 0;
     long score = 0;
     TextView timerTextView;
+    TextView faultCountTextView;
     int faultMultiplier = 0;
 
     //runs without a timer by reposting this handler at the end of the runnable
@@ -32,11 +33,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         public void run() {
             long millis = System.currentTimeMillis() - timer;
             int seconds = (int) (millis / 1000);
-            //int minutes = seconds / 60;
-            //seconds = seconds % 60;
-
-            //timerTextView.setText(String.format("%d:%02d", minutes, seconds));
             timerTextView.setText("Zeit: " + String.format("%d", seconds));
+            faultCountTextView.setText(String.format("Fehler: " + "%d", faultMultiplier));
+
 
             timerHandler.postDelayed(this, 500);
         }
@@ -60,6 +59,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         score = 0;
         timerHandler.postDelayed(timerRunnable, 0);
         timerTextView = (TextView) findViewById(R.id.tvTimer);
+        faultCountTextView =  (TextView) findViewById(R.id.tvFaultCounter);
         Question start = randomQuestion(1);
 
         setQuestionValues(start);
