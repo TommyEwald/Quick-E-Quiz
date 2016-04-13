@@ -162,4 +162,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         List<Question> questions = Question.find(Question.class, " category = ?", String.valueOf(category));
         return questions.get((int)(Math.random()*questions.size()));
     }
+
+    public int getScore() {
+        return score;
+    }
 }

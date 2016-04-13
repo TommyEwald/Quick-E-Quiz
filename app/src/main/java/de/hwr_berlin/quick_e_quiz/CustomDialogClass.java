@@ -1,13 +1,15 @@
 package de.hwr_berlin.quick_e_quiz;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import de.hwr_berlin.quick_e_quiz.network.Loader;
 
 /**
  * Created by EwaldT on 30.03.2016.
@@ -15,13 +17,13 @@ import android.widget.TextView;
 public class CustomDialogClass extends Dialog implements
         android.view.View.OnClickListener {
 
-    public Activity c;
+    public QuestionActivity c;
     public Dialog d;
     public Button yes;
     public TextView tv_time;
     public TextView tv_fault;
     public TextView tv_score;
-    public CustomDialogClass(Activity a) {
+    public CustomDialogClass(QuestionActivity a) {
         super(a);
         // TODO Auto-generated constructor stub
         this.c = a;
@@ -43,7 +45,11 @@ public class CustomDialogClass extends Dialog implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnOk:
-                // TODO Namen und score an Server senden.
+                // Send score to server
+                String name = ((EditText) findViewById(R.id.username)).getText().toString();
+                int score = c.getScore();
+                Loader.insertScore(getContext(), name, score);
+
                 Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
                 c.startActivity(highscoreIntent);
                 c.finish();
