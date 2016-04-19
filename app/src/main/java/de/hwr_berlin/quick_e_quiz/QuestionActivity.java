@@ -17,8 +17,10 @@ import de.hwr_berlin.quick_e_quiz.db.Category;
 import de.hwr_berlin.quick_e_quiz.db.Question;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
+    List<Category> openCategpries;
     TextView tvQuestions;
     Question currentQuestion;
+    Category currentCategory;
     static int faultMultiplier = 5;
     long timer = 0;
     int time = 0;
@@ -62,15 +64,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         timerHandler.postDelayed(timerRunnable, 0);
         timerTextView = (TextView) findViewById(R.id.tvTimer);
         faultCountTextView =  (TextView) findViewById(R.id.tvFaultCounter);
-        Question start = randomQuestion(1);
 
+        openCategpries = Category.find(Category.class, "cid != ?", "0");
+        Collections.shuffle(openCategpries);
+        currentCategory = openCategpries.remove(0);
+
+        Question start = randomQuestion();
         setQuestionValues(start);
     }
 
-    private List<Category> getCategories() {
-        List<Category> categories = Category.listAll(Category.class);
-        return categories;
-    }
     private String getCategorie(int cId) {
         List<Category> categories = Category.find(Category.class, "cId = ?", String.valueOf(cId));
         String output ="";
@@ -99,24 +101,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         currentQuestion = question;
     }
 
-    private void showQuestions() {
-        List<Question> questions = Question.listAll(Question.class);
-        String output = "";
-        for (Question question : questions) {
-            output += question.getId() + " - " + question.getQuestion() + "\n";
-        }
-        tvQuestions.setText(output);
-    }
-
-    private void showQuestion(int category) {
-        List<Question> questions = Question.find(Question.class, " category = ?", String.valueOf(category));
-        String output = "";
-        for (Question question : questions) {
-            output += question.getId() + " - " + question.getQuestion() + "\n";
-        }
-        tvQuestions.setText(output);
-    }
-
     private void highscore(){
         timerHandler.removeCallbacks(timerRunnable);
         score = time + wrongAnswers * faultMultiplier;
@@ -139,10 +123,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnAnswer4:
                 Button button = (Button) v;
                 Question next;
-                if (button.getText() == currentQuestion.getCorrect().toString()){
+                if (button.getText() == currentQuestion.getCorrect()){
                     Toast.makeText(this, "Richtig!!!", Toast.LENGTH_SHORT).show();
-                    if ((int)currentQuestion.getCategory() <= getCategories().size() - 2){
-                        next = randomQuestion((int)currentQuestion.getCategory() + 1);
+                    if (openCategpries.size() > 0){
+                        currentCategory = openCategpries.remove(0);
+                        next = randomQuestion();
                         setQuestionValues(next);
                     }
                     else{
@@ -151,15 +136,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 }
                 else{
                     wrongAnswers++;
-                    next = randomQuestion((int)currentQuestion.getCategory());
+                    next = randomQuestion();
                     setQuestionValues(next);
                 }
                 break;
         }
     }
 
-    private Question randomQuestion(int category) {
-        List<Question> questions = Question.find(Question.class, " category = ?", String.valueOf(category));
+    private Question randomQuestion() {
+        List<Question> questions = Question.find(Question.class, " category = ?", String.valueOf(currentCategory.getCid()));
         return questions.get((int)(Math.random()*questions.size()));
     }
 
