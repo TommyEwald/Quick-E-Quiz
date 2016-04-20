@@ -22,7 +22,6 @@ public class HighscoreActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.highscore);
 
         List<Highscore> highscores = Highscore.listAll(Highscore.class);
-        Collections.reverse(highscores);
         HighscoreAdapter adapter = new HighscoreAdapter(this, highscores);
 
         ListView items = (ListView) this.findViewById(R.id.lvHighscore);
