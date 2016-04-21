@@ -61,6 +61,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btnAnswer2).setOnClickListener(this);
         findViewById(R.id.btnAnswer3).setOnClickListener(this);
         findViewById(R.id.btnAnswer4).setOnClickListener(this);
+
+        ((Button) findViewById(R.id.btnAnswer1)).setTransformationMethod(null);
+        ((Button) findViewById(R.id.btnAnswer2)).setTransformationMethod(null);
+        ((Button) findViewById(R.id.btnAnswer3)).setTransformationMethod(null);
+        ((Button) findViewById(R.id.btnAnswer4)).setTransformationMethod(null);
+
         timer = System.currentTimeMillis();
         score = 0;
         timerHandler.postDelayed(timerRunnable, 0);
