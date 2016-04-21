@@ -29,7 +29,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     int score = 0;
     TextView timerTextView;
     TextView faultCountTextView;
-    private MediaPlayer mpNein, mpYes;
+    private MediaPlayer mpNein;
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -81,7 +81,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         setQuestionValues(start);
 
         mpNein = MediaPlayer.create(this, R.raw.nein);
-        mpYes = MediaPlayer.create(this, R.raw.yes);
     }
 
     private String getCategorie(int cId) {
@@ -136,7 +135,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 Question next;
                 if (button.getText() == currentQuestion.getCorrect()){
                     Toast.makeText(this, "Richtig!!!", Toast.LENGTH_SHORT).show();
-                    mpYes.start();
                     if (openCategpries.size() > 0){
                         currentCategory = openCategpries.remove(0);
                         next = randomQuestion();
