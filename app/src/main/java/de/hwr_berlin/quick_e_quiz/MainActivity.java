@@ -1,6 +1,7 @@
 package de.hwr_berlin.quick_e_quiz;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import de.hwr_berlin.quick_e_quiz.network.Loader;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener {
+
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,26 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setLogo(R.drawable.logo);
 
         Loader.loadData(this);
+
+        mp = MediaPlayer.create(this, R.raw.jeopardy);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.start();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mp.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.stop();
     }
 
     @Override
