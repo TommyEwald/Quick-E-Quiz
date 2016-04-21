@@ -17,13 +17,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Loader {
-    public static void loadData(final Context context) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://lamp.wlan.hwr-berlin.de/CS/CSDB3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    static Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://lamp.wlan.hwr-berlin.de/CS/CSDB3/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
-        BackendService service = retrofit.create(BackendService.class);
+    static BackendService service = retrofit.create(BackendService.class);
+
+    public static void loadData(final Context context) {
         service.listQuestions().enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
@@ -55,6 +56,19 @@ public class Loader {
             }
         });
 
+        loadHighscore(context);
+    }
+
+    public static Call<ResponseBody> insertScore(String name, int score) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://lamp.wlan.hwr-berlin.de/CS/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        BackendService service = retrofit.create(BackendService.class);
+        return service.postScore(name, score);
+    }
+
+    private static void loadHighscore(final Context context) {
         service.listHighscores().enqueue(new Callback<List<Highscore>>() {
             @Override
             public void onResponse(Call<List<Highscore>> call, Response<List<Highscore>> response) {
@@ -71,23 +85,7 @@ public class Loader {
         });
     }
 
-    public static void insertScore(final Context context, String name, int score) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://lamp.wlan.hwr-berlin.de/CS/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        BackendService service = retrofit.create(BackendService.class);
-        service.postScore(name, score).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.i("LOADER", "post worked");
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("LOADER", "post fail");
-                Toast.makeText(context, "Highscore konnte nicht eingetragen werden.", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public static Call<List<Highscore>> loadHighscore() {
+        return service.listHighscores();
     }
 }

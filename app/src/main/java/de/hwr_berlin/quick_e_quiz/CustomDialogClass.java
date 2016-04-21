@@ -8,8 +8,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.hwr_berlin.quick_e_quiz.network.Loader;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by EwaldT on 30.03.2016.
@@ -47,12 +52,21 @@ public class CustomDialogClass extends Dialog implements
             case R.id.btnOk:
                 // Send score to server
                 String name = ((EditText) findViewById(R.id.username)).getText().toString();
-                int score = c.getScore();
-                Loader.insertScore(getContext(), name, score);
+                final int score = c.getScore();
+                Loader.insertScore(name, score).enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
+                        c.startActivity(highscoreIntent);
+                        c.finish();
+                    }
 
-                Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
-                c.startActivity(highscoreIntent);
-                c.finish();
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(c, "Highscore konnte nicht an den Server gesendet werden.", Toast.LENGTH_SHORT).show();
+                        c.finish();
+                    }
+                });
                 break;
             default:
                 break;

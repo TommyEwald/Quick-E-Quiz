@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipeRefreshLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,35 +11,41 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.hwr_berlin.quick_e_quiz.HighscoreActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvHeaderRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="15dp"
-        android:text="Rank" />
-    <TextView
-        android:id="@+id/tvHeaderName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="false"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="15dp"
-        android:text="Name" />
-    <TextView
-        android:id="@+id/tvHeaderScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="15dp"
-        android:text="Score" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvHighscore"
-        android:layout_below="@id/tvHeaderScore">
-    </ListView>
+        <TextView
+            android:id="@+id/tvHeaderRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="15dp"
+            android:text="Rank" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tvHeaderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:layout_margin="15dp"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/tvHeaderScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:text="Score" />
+
+        <ListView
+            android:id="@+id/lvHighscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHeaderScore"></ListView>
+
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
