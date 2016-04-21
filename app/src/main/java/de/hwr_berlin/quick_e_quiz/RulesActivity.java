@@ -12,5 +12,6 @@ public class RulesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.regeln);
+        getSupportActionBar().setTitle("");
     }
 }
