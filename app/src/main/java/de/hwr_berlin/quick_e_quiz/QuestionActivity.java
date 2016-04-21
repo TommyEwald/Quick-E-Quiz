@@ -1,6 +1,7 @@
 package de.hwr_berlin.quick_e_quiz;
 
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     int score = 0;
     TextView timerTextView;
     TextView faultCountTextView;
+    private MediaPlayer mpNein;
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -71,6 +73,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         Question start = randomQuestion();
         setQuestionValues(start);
+
+        mpNein = MediaPlayer.create(this, R.raw.nein);
     }
 
     private String getCategorie(int cId) {
@@ -135,6 +139,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 else{
+                    mpNein.start();
                     wrongAnswers++;
                     next = randomQuestion();
                     setQuestionValues(next);
