@@ -3,6 +3,8 @@ package de.hwr_berlin.quick_e_quiz;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -42,9 +44,28 @@ public class CustomDialogClass extends Dialog implements
         setCanceledOnTouchOutside(false);
         yes = (Button) findViewById(R.id.btnOk);
         yes.setOnClickListener(this);
+        yes.setEnabled(false);
         tv_time = (TextView) this.findViewById(R.id.time);
         tv_fault = (TextView) this.findViewById(R.id.fault);
         tv_score = (TextView) this.findViewById(R.id.score);
+
+        final EditText editText = (EditText) findViewById(R.id.username);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                yes.setEnabled(!editText.getText().toString().isEmpty());
+            }
+        });
     }
     @Override
     public void onClick(View v) {
