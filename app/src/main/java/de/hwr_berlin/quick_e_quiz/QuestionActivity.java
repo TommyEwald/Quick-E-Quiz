@@ -22,7 +22,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     TextView tvQuestions;
     Question currentQuestion;
     Category currentCategory;
-    static int faultMultiplier = 5;
+    static int faultMultiplier = 25;
     long timer = 0;
     int time = 0;
     int wrongAnswers = 0;
