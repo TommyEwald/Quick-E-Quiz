@@ -2,6 +2,7 @@ package de.hwr_berlin.quick_e_quiz;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -63,6 +64,9 @@ public class CustomDialogClass extends Dialog implements
                 yes.setEnabled(!editText.getText().toString().isEmpty());
             }
         });
+
+        MediaPlayer mpYes = MediaPlayer.create(c, R.raw.yes);
+        mpYes.start();
     }
     @Override
     public void onClick(View v) {
