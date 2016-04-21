@@ -26,6 +26,7 @@ public class HighscoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.highscore);
+        getSupportActionBar().setTitle("");
 
         showHighscores();
 
