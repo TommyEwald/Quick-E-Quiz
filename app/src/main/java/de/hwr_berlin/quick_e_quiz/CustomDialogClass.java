@@ -52,22 +52,28 @@ public class CustomDialogClass extends Dialog implements
             case R.id.btnOk:
                 // Send score to server
                 String name = ((EditText) findViewById(R.id.username)).getText().toString();
-                final int score = c.getScore();
-                Loader.insertScore(name, score).enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
-                        c.startActivity(highscoreIntent);
-                        c.finish();
-                    }
+                if (name.equals("")) {
+                    Toast.makeText(c, "Es wurde kein Name eingegeben.", Toast.LENGTH_SHORT).show();
+                    c.finish();
+                }
+                else {
+                    final int score = c.getScore();
+                    Loader.insertScore(name, score).enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            Intent highscoreIntent = new Intent(c, HighscoreActivity.class);
+                            c.startActivity(highscoreIntent);
+                            c.finish();
+                        }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(c, "Highscore konnte nicht an den Server gesendet werden.", Toast.LENGTH_SHORT).show();
-                        c.finish();
-                    }
-                });
-                break;
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(c, "Highscore konnte nicht an den Server gesendet werden.", Toast.LENGTH_SHORT).show();
+                            c.finish();
+                        }
+                    });
+                    break;
+                }
             default:
                 break;
         }
